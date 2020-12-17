@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="eventDetail">
+	<resultMap type="com.spring.moon.dto.EventDetailDTO" id="EventDetailDTO">
+    	<result property="ed_id" column="e_detail_id"/>
+    	<result property="e_id" column="event_id"/>
+    	<result property="p_id" column="patt_id"/>
+    	<result property="p_sort" column="patt_sort"/>
+    </resultMap>
+    
+    <select id="selectEventDetail" parameterType="com.spring.moon.dto.EventDetailDTO" resultMap="EventDetailDTO">
+	/*eventDetail.selectEventDetail*/
+		SELECT *
+		FROM e_detail
+		where event_id = #{e_id, jdbcType=INTEGER}
+		order by patt_sort asc
+	</select>
+   
+    <select id="selectEventDetailOne" parameterType="com.spring.moon.dto.EventDetailDTO" resultMap="EventDetailDTO">
+	/*eventDetail.selectEventDetailOne*/
+		SELECT *
+		FROM e_detail
+		where e_detail_id = #{ed_id, jdbcType=INTEGER}
+	</select>
+	
+	<insert id="insertEventDetail" parameterType="com.spring.moon.dto.EventDetailDTO">
+	/*eventDetail.insertEventDetail*/
+	<selectKey keyProperty="ed_id" resultType="Integer" order="BEFORE"> 
+			SELECT 
+    				nvl(TO_NUMBER(MAX(e_detail_id)+1),0)
+	 			FROM
+	 				e_detail 
+	</selectKey>
+		INSERT INTO
+			e_detail
+			(
+    			e_detail_id
+    			,event_id
+    			,patt_id
+    			,patt_sort
+			)
+    	VALUES
+		(
+    		#{ed_id}
+	  		,#{e_id}
+	  		,#{p_id}
+	  		,#{p_sort}
+    	)
+    	
+	</insert>
+	
+	<update id="sortChangeUP" parameterType="com.spring.moon.dto.EventDetailDTO">
+	/*eventDetail.sortChangeUP*/
+		UPDATE
+			e_detail
+		SET
+			patt_sort = CASE
+			
+			WHEN
+				patt_sort = #{p_sort}
+			THEN
+				 #{prevSort}
+			WHEN
+				patt_sort = #{prevSort}
+			THEN
+				#{p_sort}
+			END
+		WHERE
+			patt_sort 
+		IN
+			(#{p_sort},#{prevSort})
+	
+	</update>
+	
+	<update id="sortChangeDOWN" parameterType="com.spring.moon.dto.EventDetailDTO">
+	/*eventDetail.sortChangeDOWN*/
+		UPDATE
+			e_detail
+		SET
+			patt_sort = CASE
+			
+			WHEN
+				patt_sort = #{nextSort}
+			THEN
+				 #{p_sort}
+			WHEN
+				patt_sort = #{p_sort}
+			THEN
+				#{nextSort}
+			END
+		WHERE
+			patt_sort 
+		IN
+			(#{nextSort},#{p_sort})
+	
+	</update>
+
+</mapper>
