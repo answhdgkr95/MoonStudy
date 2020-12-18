@@ -5,6 +5,7 @@
     <!-- /#wrapper -->
 
 
+
     <!-- Bootstrap Core JavaScript -->
     <script src="/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 

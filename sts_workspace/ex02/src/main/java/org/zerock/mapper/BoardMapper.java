@@ -10,6 +10,9 @@ public interface BoardMapper {
 	//@Select("select * from tbl_board where bno >0")
 	public List<BoardVO> getList();
 	
+	//목록보기 페이징 처리
+	public List<BoardVO> getListWithPaging();
+	
 	//게시글 등록
 	public void insert(BoardVO board);
 	

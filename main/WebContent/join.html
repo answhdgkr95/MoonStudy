@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+<style>
+
+
+  .form-inline label {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-bottom: 0
+  }
+  .form-inline .form-group {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 0
+  }
+  .form-inline .form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle
+  }
+  .form-inline .form-control-plaintext {
+    display: inline-block
+  }
+  .form-inline .custom-select, .form-inline .input-group {
+    width: auto
+  }
+  .form-inline .custom-control {
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center
+  }
+  .form-inline .custom-control-label {
+    margin-bottom: 0
+  }
+}
+    .button-serch{
+        display: inline-block;
+        padding: .5em .75em;
+        font-size: inherit;
+        font-family: inherit;
+        line-height: normal;
+        vertical-align: right: 50px;
+        background-color: #FE642E;
+        border-bottom-color: #FE642E;
+        border-radius: .25em;
+    }
+
+</style>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>JOIN</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/fontAwesome.css">
+        <link rel="stylesheet" href="css/hero-slider.css">
+        <link rel="stylesheet" href="css/templatemo-main.css">
+        <link rel="stylesheet" href="css/owl-carousel.css">
+
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+
+    <body>
+        <div class="fixed-side-navbar">
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link" href="#home"><span>Delivery</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="#services"><span>Services</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="login.html"><span>LOGIN</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="join.html"><span>JOIN</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact-us"><span>TEST</span></a></li>
+            </ul>
+        </div>
+
+
+        <div class="parallax-content baner-content" id="home">
+            <div class="container">
+                <div class="first-content">
+                    <h1>JOIN TEST</h1> <br>
+                    <p> <span><em>JOIN</em> TEST</span> </p> <br><br>
+
+
+                    <div class="contact-form">
+                        <div class="form-group">
+                            <form id="contact" action="index.html" method="post">
+
+
+                                <div style="margin:0 auto; width:300px;">
+                                    <fieldset>
+
+                                        <input name="ID" class="group" type="text" class="form-control" id="ID" placeholder="ID" style=" font-family:inherit; width:300px; height:40px;">
+
+                                    </fieldset>
+
+
+                                    <fieldset>
+
+                                        <input name="NAME" type="text" class="form-control" id="NAME" placeholder="NAME" style=" font-family:inherit; width:300px; height:40px;">
+
+                                    </fieldset>
+
+                                    <fieldset>
+
+                                        <input name="password" type="password" class="form-control" id="password" placeholder="PASSWORD" style=" font-family:inherit; width:300px; height:40px;">
+
+                                    </fieldset>
+
+                                    <fieldset>
+
+                                        <input name="email" type="Email" class="form-control" id="Email" placeholder="Email" style=" font-family:inherit; width:300px; height:40px;">
+
+                                    </fieldset>
+
+                                    <!-- 주소검색 API 구현 해야됨 일단 냅두셈-->
+
+                                    <input name="text" type="Address" class="form-control" id="address" placeholder="Address"
+                                           style=" font-family:inherit; width:150px; height:30px;">
+                                    <input type="button" class="button-serch" onclick="sample5_execDaumPostcode()" value="Search" style="width:80px; height:30px; text-align: left; font-family:inherit; font-size: 13px;
+                                    background-color:#fd7e14; color:white; ">
+
+
+                                    <div id="map" style="width:100px;height:30px;margin-top:10px;display:none"></div>
+
+                                </div>
+
+                                <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+                                <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 API KEY를 사용하세요&libraries=services">
+                                    //아직 키 안받음
+                                </script>
+                                <script>
+                                    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+                                        mapOption = {
+                                            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+                                            level: 5 // 지도의 확대 레벨
+                                        };
+
+                                    //지도를 미리 생성
+                                    var map = new daum.maps.Map(mapContainer, mapOption);
+                                    //주소-좌표 변환 객체를 생성
+                                    var geocoder = new daum.maps.services.Geocoder();
+                                    //마커를 미리 생성
+                                    var marker = new daum.maps.Marker({
+                                        position: new daum.maps.LatLng(37.537187, 127.005476),
+                                        map: map
+                                    });
+
+
+                                    function sample5_execDaumPostcode() {
+                                        new daum.Postcode({
+                                            oncomplete: function (data) {
+                                                var addr = data.address; // 최종 주소 변수
+
+                                                // 주소 정보를 해당 필드에 넣는다.
+                                                document.getElementById("sample5_address").value = addr;
+                                                // 주소로 상세 정보를 검색
+                                                geocoder.addressSearch(data.address, function (results, status) {
+                                                    // 정상적으로 검색이 완료됐으면
+                                                    if (status === daum.maps.services.Status.OK) {
+
+                                                        var result = results[0]; //첫번째 결과의 값을 활용
+
+                                                        // 해당 주소에 대한 좌표를 받아서
+                                                        var coords = new daum.maps.LatLng(result.y, result.x);
+                                                        // 지도를 보여준다.
+                                                        mapContainer.style.display = "block";
+                                                        map.relayout();
+                                                        // 지도 중심을 변경한다.
+                                                        map.setCenter(coords);
+                                                        // 마커를 결과값으로 받은 위치로 옮긴다.
+                                                        marker.setPosition(coords)
+                                                    }
+                                                });
+                                            }
+                                        }).open();
+                                    }
+                                </script>
+
+
+                                </center>
+                                </fieldset>
+
+
+
+
+                                <fieldset>
+                                    <center>
+                                        <input name="tel" type="number" class="form-control" id="TEL" placeholder="Phone number"
+                                               style=" font-family:inherit; width:300px; height:40px;">
+                                    </center>
+                                </fieldset>
+                                <fieldset>
+                                    <font size="2em" color="white">
+                                        <input type="radio" name="gender"
+                                               style=" font-family:inherit; width:19px; height:19px"
+                                               value="male">&nbsp;&nbsp;M &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="gender"
+                                               style=" font-family:inherit; width:19px;height:19px" font-size="13px" ;
+                                               value="female">&nbsp;&nbsp;F
+                                    </font>
+                                </fieldset>
+
+
+
+
+
+
+                                <fieldset>
+                                    <center>
+                                        <p> <button type="button" onclick="location.href='index.html'" class="btn" style=" font-family:inherit; width:360px; height:60px;">JOIN</button> </p>
+                                    </center>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+            <div class="col-md-6">
+            </div>
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="primary-button">
+                                <a href="#home">Back To Top</a>
+                            </div>
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google"></i></a></li>
+                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        </div>
+        </div>
+        </footer>
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+    </html>
+    

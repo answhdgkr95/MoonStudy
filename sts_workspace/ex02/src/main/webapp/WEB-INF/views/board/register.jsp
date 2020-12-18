@@ -35,15 +35,15 @@
                                             <textarea class="form-control" rows="3" name="content"></textarea>
                                         </div>
                                        
-                                        <div class="form-group">
-                                            <label>작성자</label>
-                                            <input type="text" class="form-control" name="writer">
+                                        <div class="form-group has-success">
+                                            <label class="control-label" for="inputSuccess">작성자
+                                            <input type="text" class="form-control" id="inputSuccess" name="writer">
                                         </div>
 
 
 
 
-                                        <button type="submit" class="btn btn-primary">글등록</button>
+                                        <button type="submit" class="btn btn-default">글등록</button>
                                         <button type="reset" class="btn btn-default">다시쓰기</button>
                                     </form>
                                 </div>

@@ -15,7 +15,8 @@ public class JDBCTests {
 	
 	static {
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			//Class.forName("oracle.jdbc.driver.OracleDriver");
+			Class.forName("org.mariadb.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -23,7 +24,7 @@ public class JDBCTests {
 	
 	@Test
 	public void testConnection() {
-		try(Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","book_ex","book_ex")){
+		try(Connection con=DriverManager.getConnection("jdbc:mariadb://localhost:3306/spring1","java","java")){
 			log.info(con);
 		}catch (Exception e) {
 			fail(e.getMessage());

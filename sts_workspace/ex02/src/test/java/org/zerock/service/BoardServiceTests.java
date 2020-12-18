@@ -29,8 +29,8 @@ public class BoardServiceTests {
 	@Test
 	public void testregister() {
 		BoardVO board = new BoardVO();
-		board.setTitle("2:14 새로 작성하는 글");
-		board.setContent("2:14 새로 작성하는 내용");
+		board.setTitle("s새로 작성하는 글");
+		board.setContent("s새로 작성하는 내용");
 		board.setWriter("snewbie");
 		service.register(board);
 	}

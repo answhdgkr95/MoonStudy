@@ -26,7 +26,7 @@ public class DataSourceTests {
 	@Test
 	public void testConnection() {
 		try(Connection con=dataSource.getConnection()){
-			log.info(con + "けけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけけ");
+			log.info(con);
 		}catch(Exception e) {
 			fail(e.getMessage());
 		}

@@ -1,6 +1,6 @@
 package org.zerock.controller;
 
-import org.springframework.stereotype.Controller; 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,7 +37,8 @@ public class BoardController {
 		
 		//몇번글이 등록되었습니다.
 		//model.addAttribute("result", board.getBno());
-		rttr.addFlashAttribute("result", board.getBno());
+		rttr.addFlashAttribute("result", "register");
+		rttr.addFlashAttribute("bno", board.getBno());
 		//한번만 값이 전송된다.
 		
 		return "redirect:/board/list";
@@ -58,7 +59,8 @@ public class BoardController {
 	public String modify(BoardVO board,Model model,RedirectAttributes rttr) {
 		if(service.modify(board))
 			//model.addAttribute("result", "success");
-			rttr.addFlashAttribute("result", "success"); //한번만 보내기
+			rttr.addFlashAttribute("result", "modify"); //한번만 보내기
+			rttr.addFlashAttribute("bno", board.getBno());
 		return "redirect:/board/list";
 	}
 	
@@ -66,7 +68,8 @@ public class BoardController {
 	public String remove(Long bno,Model model,RedirectAttributes rttr) {
 		if(service.remove(bno))
 			//model.addAttribute("result", "success");
-			rttr.addFlashAttribute("result", "success1"); 
+			rttr.addFlashAttribute("result", "remove"); 
+			rttr.addFlashAttribute("bno", bno);
 		return "redirect:/board/list";
 	}
 }

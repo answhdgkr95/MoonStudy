@@ -14,8 +14,13 @@
 
 		<property name="driverClassName"
 			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="jdbcUrl"
-			value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE"></property>
+<!-- 		<property name="jdbcUrl" -->
+<!-- 			value="jdbc:lodbg4jc:oracle:thin:@localhost:1521:XE"></property> -->
+<!-- 		<property name="driverClassName" -->
+<!-- 			value="org.mariadb.jdbc.Driver"></property> -->
+		<property name="jdbcUrl" 
+				value="jdbc:log4jdbc:mariadb://localhost:3306/spring1"></property> 
+
 			
 <!-- 		<property name="driverClassName" -->
 <!-- 			value="com.mysql.cj.jdbc.Driver"></property> -->
@@ -37,8 +42,8 @@
 <!-- 		<property name="jdbcUrl" -->
 <!-- 			value="jdbc:log4jdbc:mariadb://127.0.0.1:3307/testdb"></property>					 -->
 
-		<property name="username" value="book_ex"></property>
-		<property name="password" value="book_ex"></property>
+		<property name="username" value="java"></property>
+		<property name="password" value="java"></property>
 	</bean>
 
 	<!-- HikariCP configuration -->
@@ -47,11 +52,10 @@
 		<constructor-arg ref="hikariConfig" />
 	</bean>
 
-<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
-
-<property name="dataSource" ref="dataSource"/>
-
-</bean>
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
 
 	<mybatis-spring:scan base-package="org.zerock.mapper" />
 	<context:component-scan base-package="org.zerock.service" />

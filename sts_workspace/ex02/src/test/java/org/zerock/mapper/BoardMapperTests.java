@@ -24,23 +24,28 @@ public class BoardMapperTests {
 	}
 	
 	@Test
+	public void testgetListWithPaging() {
+		mapper.getListWithPaging().forEach(board -> log.info(board));
+	}
+	
+	@Test
 	public void testInsert() {
 		BoardVO board = new BoardVO();
-		board.setTitle("»õ·Î ÀÛ¼ºÇÏ´Â ±Û");
-		board.setContent("»õ·Î ÀÛ¼ºÇÏ´Â ³»¿ë");
+		board.setTitle("ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½");
+		board.setContent("ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		board.setWriter("newbie");
 		mapper.insert(board);
-		log.info(board); //bno °ªÀÌ ¹ÌÁ¸Àç(0)
+		log.info(board); //bno ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(0)
 	}
 
 	@Test
 	public void testInsertSelectKey() {
 		BoardVO board = new BoardVO();
-		board.setTitle("»õ·Î ÀÛ¼ºÇÏ´Â ±Û");
-		board.setContent("»õ·Î ÀÛ¼ºÇÏ´Â ³»¿ë");
+		board.setTitle("ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½");
+		board.setContent("ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		board.setWriter("newbie");
 		mapper.insertSelectKey(board);
-		log.info(board); //bno °ªÀÌ Á¸Àç
+		log.info(board); //bno ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	}
 	
 	@Test
@@ -51,22 +56,22 @@ public class BoardMapperTests {
 	
 	@Test
 	public void testDelete() {
-		log.info("±Û »èÁ¦ °³¼ö:"+ mapper.delete(3L));
+		log.info("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½:"+ mapper.delete(3L));
 	}
 	
 	@Test
 	public void testUpdate() {
 		BoardVO board = new BoardVO();
 		board.setBno(5);
-		board.setTitle("¼öÁ¤");
-		board.setContent("¼öÁ¤");
-		board.setWriter("¼öÁ¤");
+		board.setTitle("ï¿½ï¿½ï¿½ï¿½");
+		board.setContent("ï¿½ï¿½ï¿½ï¿½");
+		board.setWriter("ï¿½ï¿½ï¿½ï¿½");
 		mapper.update(board);
 	}
 	
 	@Test
 	public void testDeleteCount() {
-		log.info("±Û»èÁ¦ °³¼ö:"+mapper.deleteCount());
+		log.info("ï¿½Û»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½:"+mapper.deleteCount());
 	}
 	
 }
