@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+  
+<mapper namespace="com.hwyj.mapper.MemberMapper">
+
+	<resultMap type="com.hwyj.domain.MemberVO" id="memberMap">
+		<id property="id" column="id" />
+		<result property="id" column="id" />
+		<result property="pw" column="pw" />
+		<result property="m_name" column="m_name" />
+		<collection property="authList" resultMap="authMap">
+		</collection>
+	</resultMap>
+	
+	<resultMap type="com.hwyj.domain.AuthVO" id="authMap">
+		<result property="id" column="id" />
+		<result property="auth" column="auth" />
+	</resultMap>
+	
+<!-- 	멤버정보읽기, 로그인 등 -->
+	<select id="read" resultMap="memberMap"> 
+		select member.id, pw, m_name, enabled, auth from member left outer join auth on member.id=auth.id
+		where member.id=#{id}
+	</select>
+	
+<!-- 	멤버 목록보기 (auth별로 보기) -->
+	<select id="getMemberList" resultMap="memberMap"> 
+		select member.id, pw, m_name, enabled, auth from member left outer join auth on member.id=auth.id
+		where auth=#{auth}
+	</select>
+	
+<!-- 	멤버 삭제 -->
+	<delete id="deleteMember">
+		delete from member where id=#{id}
+	</delete>
+
+
+</mapper>

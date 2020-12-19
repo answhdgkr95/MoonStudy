@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="bcryptPasswordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	
+	<bean id="customUserDetailsService"
+		class="com.hwyj.security.CustomUserDetailsService"></bean>
+
+
+	<security:http auto-config="true" use-expressions="true">
+	
+		<security:form-login login-page="/login" />
+				
+	<!-- 403 접근제한 페이지 처리 -->
+	<security:access-denied-handler error-page="/accessError" /> 
+	
+	<!-- 쿠키유효시간 -->
+	<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800"/> <!-- 1주일? -->	
+<!-- 	로그아웃시 쿠키 삭제 -->
+	<security:logout logout-url="/logout" invalidate-session="true" delete-cookies="remember-me,JSESSION_ID" />
+	
+	</security:http>
+	
+	
+	<security:authentication-manager>
+		
+		<security:authentication-provider
+		 user-service-ref="customUserDetailsService">
+		 
+<!-- 			<security:jdbc-user-service data-source-ref="dataSource" -->
+<!-- 			users-by-username-query="select id, pw, enabled from member where id=?" -->
+<!-- 			authorities-by-username-query="select id, auth from auth where id=?" /> -->
+			
+			<security:password-encoder
+			ref="bcryptPasswordEncoder" />
+			
+		</security:authentication-provider>
+	
+	</security:authentication-manager>
+
+
+</beans>
