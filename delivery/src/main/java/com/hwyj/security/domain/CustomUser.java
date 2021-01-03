@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
+import com.hwyj.domain.CustomerVO;
 import com.hwyj.domain.MemberVO;
 
 import lombok.Getter;
@@ -17,6 +18,7 @@ public class CustomUser extends User {
 	private static final long serialVersionUID = 1L;
 	
 	private MemberVO memberVO;
+	private CustomerVO customervo;
 	
 	public CustomUser(String id, String pw, Collection<? extends GrantedAuthority> authorities) {
 		super(id, pw, authorities);
@@ -28,5 +30,5 @@ public class CustomUser extends User {
 		
 		this.memberVO= memberVO;
 	}
-
+	
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="customer">
+	<resultMap type="com.hwyj.domain.CustomerVO"
+		id="CustomerDTO">
+		<result property="id" column="id" />
+		<result property="pw" column="pw" />
+		<result property="m_name" column="m_name" />
+		<result property="email" column="email" />
+	</resultMap>
+
+	<insert id="insertCustomer" parameterType="com.hwyj.domain.CustomerVO"> 
+		INSERT into testdb.member(id, pw, m_name, email)
+		VALUES (#{id},
+		 #{pw} 
+		, #{m_name} , 
+		#{email})
+	</insert>
+	<select id="select" parameterType="com.hwyj.domain.CustomerVO" 
+	resultMap="com.hwyj.domain.CustomerVO"> 
+		select id,pw,m_name,email from member where limit 1
+	</select>
+	
+
+	
+
+
+</mapper>

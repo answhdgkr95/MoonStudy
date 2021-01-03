@@ -25,6 +25,8 @@
 		where member.id=#{id}
 	</select>
 	
+	
+	
 <!-- 	멤버 목록보기 (auth별로 보기) -->
 	<select id="getMemberList" resultMap="memberMap"> 
 		select member.id, pw, m_name, enabled, auth from member left outer join auth on member.id=auth.id
@@ -35,6 +37,27 @@
 	<delete id="deleteMember">
 		delete from member where id=#{id}
 	</delete>
+	
+	<insert id="insertCustomer" parameterType="com.hwyj.domain.CustomerVO"> 
+		INSERT into testdb.member(id, pw, m_name, email)
+		VALUES (#{id}	,
+		 		#{pw} 	,
+		 	#{m_name}	 , 
+			#{email})
+	</insert>
+	
+	<!-- 	중복 -->
+	<select id="selectCustomer" parameterType="com.hwyj.domain.CustomerVO" resultMap="memberMap">
+ 	select id from member
+     where id = #{id}
+</select>
+	
+	
+	
+	
+
+	
+	
 
 
 </mapper>

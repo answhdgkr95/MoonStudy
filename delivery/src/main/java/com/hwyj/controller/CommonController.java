@@ -1,13 +1,25 @@
 package com.hwyj.controller;
 
+import java.util.Locale;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.hwyj.domain.CustomerVO;
+import com.hwyj.mapper.MemberMapper;
 
 import lombok.extern.log4j.Log4j;
 
+
+@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Controller
 @Log4j
 public class CommonController {
@@ -21,6 +33,22 @@ public class CommonController {
 	
 	@GetMapping("/login") //로그인 페이지
 	public void login() {
+		
+	}
+	
+	@GetMapping("/min/test") //로그인 페이지
+	public void test() {
+		
+	}
+	
+	
+	@GetMapping("/join") //가입
+	public void join() {
+		
+	}
+	
+	@GetMapping("/index") //main
+	public void index() {
 		
 	}
 	
@@ -45,5 +73,27 @@ public class CommonController {
 		//log .info(auth);
 	}
 	
+	@Autowired
+	private MemberMapper memberMapper;
+	@GetMapping("/insertCustomer")  //ㅎㅗㅣㅇㅜㅓㄴㄱㅏㅇㅣㅂ
+	@ResponseBody
+	public String insertCustomer(Locale locale, CustomerVO csVO,Model model) {
 
-}
+		int a= 0;
+	/*	if(memberMapper.selectCustomer(csVO.getId())!=0) {
+			return "2";
+			
+		}
+		else {*/
+		 a = memberMapper.insertCustomer(csVO);
+		 System.out.println(a);
+		
+		return a+"";
+	}
+
+
+	}
+
+	
+	
+

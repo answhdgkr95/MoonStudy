@@ -13,6 +13,7 @@
 비밀번호 <input type="password" name="password" /> <br />
 <input type="checkbox" name="remember-me"> 자동로그인
 <input type="submit" value="로그인" />
+<input type="submit" value="회원가입" id="join"/>
 <input type="hidden" name="${_csrf.parameterName }"value="${_csrf.token }" />
 
 </form>

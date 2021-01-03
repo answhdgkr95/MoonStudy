@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.hwyj.domain.CustomerVO;
 import com.hwyj.domain.MemberVO;
+import com.hwyj.mapper.Custmapper;
 import com.hwyj.mapper.MemberMapper;
 
 import lombok.AllArgsConstructor;
@@ -22,5 +24,21 @@ public class MemberServiceImpl implements MemberService {
 		log.info("멤버 목록 보기: "+memberMapper.getMemberList(auth));
 		return memberMapper.getMemberList(auth);
 	}
+
+	@Override //회원가입
+	public int insertCustomer(CustomerVO csVO) {
+		// TODO Auto-generated method stub
+		System.out.println("test");
+		System.out.println("test2");
+		 int a = memberMapper.insertCustomer(csVO);
+		 System.out.println(a);
+		 return 0;
+	}
+	
+	/*
+	 * @Override public Integer selectCustomer (CustomerVO csVO) { int a =
+	 * memberMapper.selectCustomer(csVO.getId()); if(a!=0) { a =2; } return a; }
+	 */
+	
 
 }

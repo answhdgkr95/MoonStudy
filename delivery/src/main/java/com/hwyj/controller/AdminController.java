@@ -1,12 +1,13 @@
 package com.hwyj.controller;
 
-import org.springframework.security.access.prepost.PreAuthorize;
+import java.util.Locale;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import com.hwyj.domain.CustomerVO;
 import com.hwyj.service.MemberService;
 
 import lombok.AllArgsConstructor;
@@ -29,5 +30,19 @@ public class AdminController {
 		model.addAttribute("memberList", memberService.getMemberList(auth));
 		model.addAttribute("auth", auth);
 	}
+	
+	@GetMapping("/insertCustomer") 
+	public void insertCustomer(Locale locale, CustomerVO csVO,Model model) {
+		model.addAttribute("memberList", memberService.insertCustomer(csVO));
+
+	}
+	
+	/*
+	 * @GetMapping("/selectCustomer") public void selectCustomer(Locale locale,
+	 * CustomerVO csVO,Model model) { model.addAttribute("memberList",
+	 * memberService.selectCustomer(csVO));
+	 * 
+	 * }
+	 */
 
 }
